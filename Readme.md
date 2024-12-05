@@ -220,4 +220,4 @@ This project is licensed under the MIT License.
 Minitorch is inspired by the  PyTorch and the need to understand how the pyTorch library works in the backend. It is designed and structured similar to pyTorch library, but there are certain areas where this repo differs from actual pytorch to keep it simple. You can refer to the examples for the code. 
 
 ## 💬 Feedback
-For questions or discussions, please open an issue or contact the maintainer at your-email@example.com.
+For questions or discussions, please open an issue or contact the maintainer at kbandarwad@gmail.com.
