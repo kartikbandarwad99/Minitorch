@@ -17,7 +17,7 @@ A from-scratch implementation of PyTorch's core functionality using NumPy. This 
 
 ## 🌟 Features
 
-* Tensor Operations: Support for basic tensor operations with automatic differentiation.
+* Tensor Operations: Support for basic tensor operations with back propogation.
 * Neural Network Modules: Implementation of common layers like Linear, Tanh, Softmax, Embedding, and Flatten.
 * Sequential Models: Easy model building using the Sequential container.
 * Optimizers: Stochastic Gradient Descent (SGD) optimizer for training models.
@@ -50,7 +50,7 @@ minitorch
         └── loss.py
 ```
 
-* Tensor: Core tensor class with support for automatic differentiation and back propogation.
+* Tensor: Core tensor class with support for back propogation.
 * nn: Neural network modules, models, optimizers, and loss functions.
     * modules: Individual layer implementations
     * models: Model containers like Sequential.
@@ -90,7 +90,7 @@ You can install Minitorch in editable mode using pip:
 ```python
 import minitorch as torch
 
-x = torch.Tensor([1.0, 2.0, 3.0], requires_grad=True)
+x = torch.Tensor([1.0, 2.0, 3.0])
 
 # Basic operations
 y = x * 2
@@ -105,7 +105,8 @@ print("Gradients:", x.grad)  # Output: [2.0, 2.0, 2.0]
 ### Building Models
 You can build neural network models using the provided modules.
 ```python
-from torch.nn import Linear, Tanh, Sequential
+import minitorch 
+from minitorch.nn import Linear, Tanh, Sequential
 
 # Define a simple model
 model = Sequential([
@@ -197,9 +198,8 @@ During the development of Minitorch, several challenges were encountered, partic
 **Solution**: Reviewed and corrected the backward pass implementations in tensor operations to ensure accurate gradient propagation.
 
 ### ↩️ Backpropagation
-**Exploding Gradients**: High learning rates caused gradients to explode, resulting in loss values reaching inf or nan.
-
-**Solution**: Reduced the learning rate, implemented proper weight initialization to stabilize training.
+**Exploding Gradients**: High learning rates and random normal weight initialization in Linear layers caused gradients to explode, resulting in loss values reaching inf or nan.
+Solution: Reduced the learning rate and implemented proper weight initialization by multiplying weights with a scaling factor to stabilize training.
 
 ## 🚧 Work in Progress
 
@@ -210,6 +210,7 @@ Here are the features I am currently working on:
 - **Convolutional Layers**: Extending the module to include convolutional layers.
 - **Higher-Dimensional Tensors**: Enhancing the `Tensor` class to efficiently handle tensors with more than two dimensions.
 - **Batch Normalization Layers**: Implementing batch normalization layers instead of merely initializing weights with scaling factors.
+- **`requires_grad` option: Adding the requires_grad option for tensors. In Minitorch, tensors have gradients enabled by default, and this feature will allow users to control whether gradients are tracked for specific tensors.
 
 ## 📝 License
 
@@ -217,7 +218,7 @@ This project is licensed under the MIT License.
 
 ## 🙏 Acknowledgments
 
-Minitorch is inspired by the  PyTorch and the need to understand how the pyTorch library works in the backend. It is designed and structured similar to pyTorch library, but there are certain areas where this repo differs from actual pytorch to keep it simple. You can refer to the examples for the code. 
+Minitorch is inspired by PyTorch and the desire to understand how the PyTorch library works in the backend. It is designed and structured similarly to the PyTorch library, but there are certain areas where this repository differs from actual PyTorch to keep it simple. You can refer to the examples for the code. Additionally, Andrej Karpathy's lectures have been instrumental in guiding the development of this project.
 
 ## 💬 Feedback
-For questions or discussions, please open an issue or contact the maintainer at kbandarwad@gmail.com.
+For questions or discussions, please reach out to me at kbandarwad@gmail.com.
