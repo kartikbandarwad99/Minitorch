@@ -66,7 +66,7 @@ minitorch
 1. **Clone the Repository**
 
     ```bash 
-    git clone https://github.com/yourusername/minitorch.git 
+    git clone https://github.com/kartikbandarwad99/minitorch.git 
     ```
 
 2. **Navigate to the Project Directory**
